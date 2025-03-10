@@ -1,0 +1,51 @@
+@import './assets/styles/reset.sass';
+@import './assets/styles/fonts.css';
+@import 'tailwindcss';
+
+* {
+  box-sizing: border-box;
+}
+
+@theme {
+  --font-serif: ui-serif, 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, 'Satoshi',
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --color-white: #ffffff;
+  --bg-white: #ffffff;
+}
+
+@utility container {
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: 3.5rem;
+  @variant sm {
+    padding-inline: 1.25rem;
+  }
+  ,
+  @variant md {
+    padding-inline: 2.75rem;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: rgb(245, 160, 159);
+  background-image: linear-gradient(
+      90deg,
+      rgb(245, 160, 159),
+      transparent calc(33.33% - 15rem),
+      var(--bg-white) calc(33.33% - 15rem),
+      transparent calc(33.33% - 15rem)
+    ),
+    linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(66.66% + 15rem),
+      var(--bg-white) calc(66.66% + 15rem),
+      transparent calc(66.66% + 15rem)
+    );
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
