@@ -1,17 +1,26 @@
 @import './assets/styles/reset.sass';
 @import './assets/styles/fonts.css';
 @import 'tailwindcss';
+:root {
 
+}
 * {
   box-sizing: border-box;
+  --screen-md: 768px;
+  --screen-sm: 375px;
+  --color-white: #ffffff;
+  --color-black: #000000;
 }
 
 @theme {
-  --font-serif: ui-serif, 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+  --font-serif: ui-serif, 'Playfair Display', Georgia, 'Times New Roman', Times,
+    serif;
   --font-sans: ui-sans-serif, system-ui, sans-serif, 'Satoshi',
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --color-white: #ffffff;
   --bg-white: #ffffff;
+  --screen-md: 768px;
+  --screen-sm: 375px;
 }
 
 @utility container {
@@ -28,24 +37,40 @@
 }
 
 body {
+  font-family: 'Satoshi';
+  color: #ffffff;
+  font-size: 16px;
   overflow-x: hidden;
   min-width: 320px;
   min-height: 100vh;
   background-color: rgb(245, 160, 159);
-  background-image: linear-gradient(
-      90deg,
-      rgb(245, 160, 159),
-      transparent calc(33.33% - 15rem),
-      var(--bg-white) calc(33.33% - 15rem),
-      transparent calc(33.33% - 15rem)
-    ),
-    linear-gradient(
-      90deg,
-      transparent,
-      transparent calc(66.66% + 15rem),
-      var(--bg-white) calc(66.66% + 15rem),
-      transparent calc(66.66% + 15rem)
-    );
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0 75% 0 auto;
+  width: 1px;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: -1;
+}
+body::after {
+  content: '';
+  position: absolute;
+  inset: 0 25% 0 auto;
+  width: 1px;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+  body::after {
+    right: 20%;
+  }
+  body::before {
+    right: 80%;
+  }
 }

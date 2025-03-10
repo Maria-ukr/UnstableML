@@ -1,11 +1,12 @@
 
+import Header from './components/Header/Header';
 import './App.sass';
 
 function App() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
