@@ -1,38 +1,35 @@
 @import './assets/styles/reset.sass';
 @import './assets/styles/fonts.css';
 @import 'tailwindcss';
-:root {
 
-}
 * {
   box-sizing: border-box;
-  --screen-md: 768px;
-  --screen-sm: 375px;
+  --screen-md: 769px;
+  --screen-sm: 374px;
   --color-white: #ffffff;
   --color-black: #000000;
 }
 
 @theme {
-  --font-serif: ui-serif, 'Playfair Display', Georgia, 'Times New Roman', Times,
-    serif;
+  --font-serif: ui-serif, 'Playfair Display', Georgia, 'Times New Roman';
   --font-sans: ui-sans-serif, system-ui, sans-serif, 'Satoshi',
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --color-white: #ffffff;
   --bg-white: #ffffff;
-  --screen-md: 768px;
+  --screen-md: 769px;
   --screen-sm: 375px;
 }
 
 @utility container {
   max-width: 1600px;
   margin-inline: auto;
-  padding-inline: 3.5rem;
+  padding-inline: 1.25rem;
   @variant sm {
-    padding-inline: 1.25rem;
+    padding-inline: 1.75rem;
   }
   ,
   @variant md {
-    padding-inline: 2.75rem;
+    padding-inline: 3.5rem;
   }
 }
 
@@ -45,6 +42,7 @@ body {
   min-height: 100vh;
   background-color: rgb(245, 160, 159);
   position: relative;
+  padding-top: 130px;
 }
 
 body::before {
@@ -66,7 +64,7 @@ body::after {
   z-index: -1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   body::after {
     right: 20%;
   }
