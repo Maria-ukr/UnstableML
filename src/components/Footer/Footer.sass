@@ -1,0 +1,81 @@
+.footer
+  font-weight: 500!important
+  border-top: 1px solid var(--color-white-40)
+  &__socials
+    &-line
+      transform: translateX(50px)
+      @media (max-width: 992px)
+        transform: translateX(70%)
+      @media (max-width: 769px)
+        display: none
+      &::after
+        content: ''
+        position: absolute
+        inset: 0
+        height: 100%
+        width: 1px
+        background-color: var(--color-white)
+        transform: rotate(17deg)
+        opacity: 0.4
+        z-index: 1
+    &-list
+      z-index: 1000
+      @media (max-width: 769px)
+        display: flex
+        flex-direction: column
+        align-items: center
+    &-item
+      margin-bottom: 1.4rem
+      &:last-child
+        margin-bottom: 0
+      & a
+        & p
+          display: flex
+          background-position: center
+          background-repeat: no-repeat
+          background-size: contain
+          width: 24px
+          height: 24px
+          border-radius: 50%
+          &.twitter
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" d="m10.8 12.8-7 8M19 3.2l-6.2 7.2M3.3 3.2 17 20.9h3.8L7.1 3.1H3.3Z"/></svg>')
+          &.discord
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" d="m8.8 17-1.5 2c-3.6-.1-5-2.5-5-2.5 0-3.4.8-6.7 2.4-9.8 1.3-1 3-1.6 4.6-1.7l.5 1.2a16.5 16.5 0 0 1 4.4 0l.5-1.2c1.7 0 3.3.7 4.7 1.7 1.5 3 2.3 6.4 2.4 9.8 0 0-1.4 2.4-5.1 2.5l-1.5-2m3.3-1.4c-2 1-3.8 2-6.5 2s-4.5-1-6.5-2"/><path stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" d="M9 14.8a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4ZM15 14.8a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4Z"/></svg>')
+          &.instagram
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path stroke="%23fff" d="M3 16V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5Z"/><path stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" d="M17.5 6.5h0"/></svg>')
+      a:hover
+        & p
+          background-color: var(--color-white)
+          outline: 3px solid var(--color-white)
+          &.twitter
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M10.8017 12.811L3.84619 20.749M18.9617 3.251L12.7767 10.535M3.30469 3.25L17.0247 20.75H20.8047L7.08519 3.25H3.30469Z" stroke="%23151515" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+          &.discord
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8.795 17.0856C8.3416 17.7469 7.85602 18.3855 7.34 18.9991C3.65 18.8941 2.25 16.4991 2.25 16.4991C2.30193 13.1056 3.1243 9.76827 4.655 6.73914C6.00009 5.68686 7.63906 5.0788 9.345 4.99914L9.845 6.15414C10.5592 6.05545 11.2791 6.00367 12 5.99914C12.7242 6.00158 13.4474 6.05168 14.165 6.14914L14.665 4.99414C16.3726 5.07811 18.0117 5.69148 19.355 6.74914C20.8808 9.77606 21.6997 13.1098 21.75 16.4991C21.75 16.4991 20.35 18.8941 16.66 18.9991C16.1514 18.3887 15.6742 17.7529 15.23 17.0941M18.46 15.6441C16.54 16.6166 14.6825 17.5891 12 17.5891C9.3175 17.5891 7.46 16.6166 5.54 15.6441" stroke="%23151515" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.92305 14.7895C9.84812 14.7895 10.598 14.0395 10.598 13.1145C10.598 12.1894 9.84812 11.4395 8.92305 11.4395C7.99797 11.4395 7.24805 12.1894 7.24805 13.1145C7.24805 14.0395 7.99797 14.7895 8.92305 14.7895Z" stroke="%23151515" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.0764 14.7895C16.0014 14.7895 16.7514 14.0395 16.7514 13.1145C16.7514 12.1894 16.0014 11.4395 15.0764 11.4395C14.1513 11.4395 13.4014 12.1894 13.4014 13.1145C13.4014 14.0395 14.1513 14.7895 15.0764 14.7895Z" stroke="%23151515" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+          &.instagram
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path stroke="%23151515" stroke-linecap="round" stroke-linejoin="round" d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path stroke="%23151515" d="M3 16V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5Z"/><path stroke="%23151515" stroke-linecap="round" stroke-linejoin="round" d="M17.5 6.5h0"/></svg>')
+  &__menu
+    @media (max-width: 992px)
+      gap: 3rem
+      margin-left: 2rem
+    @media (max-width: 769px)
+      margin-left: auto
+    &-list
+      & li
+        margin-bottom: 1.5rem
+        &:last-child
+          margin-bottom: 0
+  &__rights
+    font-size: 12px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    @media (max-width: 769px)
+      gap: 1rem
+    & ul
+      @media (max-width: 769px)
+        display: flex
+        gap: 1.25rem
+      & li
+        margin-bottom: 1rem
+        &:last-child
+          margin-bottom: 0

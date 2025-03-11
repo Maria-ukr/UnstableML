@@ -11,7 +11,7 @@ export default function Logo(props) {
       setWidthScreen(window.innerWidth);
     };
     window.addEventListener('resize', handleWidth);
-      (props?.size === 'full' && widthScreen > 768)
+      (props?.size === 'full' && widthScreen >= 768)
         ? setLogoImage(LogoImg)
         : setLogoImage(LogoImgMob);
     return () => {
@@ -23,7 +23,7 @@ export default function Logo(props) {
     <img
       src={logoImage}
       alt='logo'
-      className={`w-8 md:w-[9.5rem] h-auto ${props?.classes || ''}`}
+      className={`w-8 md:w-[9.5rem] h-fit ${props?.classes || ''}`}
     />
   );
 }
