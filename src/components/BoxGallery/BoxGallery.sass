@@ -1,0 +1,59 @@
+.gallery
+  &__grid
+    width: 75%
+    margin: 5rem auto
+  &__content
+    margin: 0 auto
+    padding: 0 5.2rem
+    width: 80%
+    @media (max-width: 546px)
+      width: 100%
+      padding: 0rem
+    &-text
+      margin-top: 2.25rem
+      padding-left: 3.5rem
+      @media (max-width: 546px)
+        padding: 0
+  &__slider
+    margin: 3.5rem -2rem 3.5rem 0
+    @media (max-width: 546px)
+      margin-top: 4.5rem
+  &__slide
+    width: auto
+    height: auto
+    overflow: hidden
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: 0
+    video 
+      border-radius: 8px
+      max-height: 19.5rem
+      width: auto
+      margin: 0
+      display: block
+      @media (max-width: 760px)
+        max-height: auto
+
+.swiper-slide
+  width: auto
+  text-align: center
+
+.gallery__caption
+  position: absolute
+  transform: rotate(-90deg) translateY(-50%)
+  transform-origin: left center
+  left: 4rem
+  top: 115%
+  bottom: 0
+  font-size: 7.7rem
+  text-transform: uppercase
+  z-index: 99999
+  height: min-content
+  line-height: 0
+  white-space: nowrap
+  mix-blend-mode: soft-light
+  @media (min-width: 769px)
+    top: 100%
+  @media (max-width: 546px)
+    font-size: 4.7rem

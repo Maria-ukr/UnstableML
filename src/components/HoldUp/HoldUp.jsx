@@ -8,7 +8,7 @@ export default function HoldUp() {
       <section className='container pt-16 pb-24'>
         <div
           style={{ backgroundImage: `url(${BgImage})` }}
-          className='hold-up rounded-2xl overflow-hidden h-[80vh]'
+          className='hold-up rounded-2xl overflow-hidden h-[80vh] max-md:mx-7'
         >
           <div className='flex flex-col justify-center items-center h-full w-max mx-auto px-6'>
             <h2 className='font-sans flex items-center font-medium'>
