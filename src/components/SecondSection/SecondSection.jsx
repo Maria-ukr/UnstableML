@@ -8,27 +8,14 @@ import Cloud2 from './../../assets/images/сloud_2.png';
 export default function SecondSection() {
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.from('.cloud1', { x: -700, duration: 1.6 }, '+=1.6')
-    .from('.cloud2', {
-      x: 700,
-      duration: 1.6,
-    }, "<");
-    gsap.utils.toArray(".cloud").forEach(randomFloat);
-    function randomFloat(element) {
-      gsap.to(element, {
-        x: gsap.utils.random([-20, 3]),
-        y: gsap.utils.random([-20, 10]),
-        ease: "sine.inOut",
-        autoRound: false,
-        duration: gsap.utils.random([1, 2]),
-        onComplete: () => randomFloat(element)
-      });
-      gsap.to(element, {
-        rotation: "+=10",
-        duration: 90,
-        onComplete: () => randomFloat(element)
-      });
-    }
+    tl.from('.cloud1', { x: -700, duration: 1.6 }, '+=1.6').from(
+      '.cloud2',
+      {
+        x: 700,
+        duration: 1.6,
+      },
+      '<'
+    );
   });
 
   return (
@@ -38,12 +25,12 @@ export default function SecondSection() {
           <img
             src={Cloud1}
             alt='cloud1'
-            className='cloud cloud1 absolute -left-2/3 -bottom-1/6 -z-1'
+            className='cloud1 absolute -left-2/3 -bottom-1/6 -z-1'
           />
           <img
             src={Cloud2}
             alt='cloud2'
-            className='cloud cloud2 absolute -right-2/3 -top-1/6 -z-1'
+            className='cloud2 absolute -right-2/3 -top-1/6 -z-1'
           />
           <div className='dreams__caption flex flex-col justify-start items-start w-max max-sm:mb-8 mb-36 md:mb-48'>
             <p className='sup-text italic font-sans font-semibold place-self-end text-xl'>

@@ -4,6 +4,30 @@
   margin: 0 auto
   @media (max-width: 769px)
     padding: 0
+  & .cloud1
+    animation-name: floating
+    animation-duration: 3s
+    animation-iteration-count: infinite
+    animation-timing-function: ease-in-out
+    @media (max-width: 769px)
+      bottom: 5%
+      scale: 1.2!important
+    @media (max-width: 375px)
+      bottom: -30%
+      left: -13%
+      scale: 1.5!important
+  & .cloud2
+    animation-name: floating-2
+    animation-duration: 3s
+    animation-iteration-count: infinite
+    animation-timing-function: ease-in-out
+    @media (max-width: 769px)
+      top: 0
+      scale: 1.2!important
+    @media (max-width: 375px)
+      top: -35%
+      right: -13%
+      scale: 1.7!important
   &__caption
     @media (max-width: 769px)
       width: 100%
@@ -36,4 +60,19 @@
       margin: 0 auto
     @media (max-width: 609px)
       width: 100%
-    
+
+@keyframes floating
+  0%
+    transform: translateY(0px)
+  50%
+    transform: translate(-20px, -20px)
+  100%
+    transform: translate(0, 0)
+
+@keyframes floating-2
+  0%
+    transform: translateY(0px)
+  50%
+    transform: translate(20px, -20px)
+  100%
+    transform: translate(0, 0)
