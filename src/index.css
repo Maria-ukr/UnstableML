@@ -27,7 +27,6 @@
   @variant sm {
     padding-inline: 1.25rem;
   }
-  ,
   @variant md {
     padding-inline: 1.75rem;
   }
@@ -67,6 +66,17 @@ body::after {
 h2 {
   font-size: clamp(4rem, -0.7rem + 8.3vw, 6.9rem);
   letter-spacing: -4%;
+}
+
+h3 {
+  font-size: clamp(3rem, -0.7rem + 8.3vw, 6.25rem);
+  letter-spacing: -4%;
+}
+
+h6 {
+  font-size: clamp(2rem, -0.7rem + 8.3vw, 2rem);
+  letter-spacing: -2%;
+  line-height: 120%;
 }
 
 @media screen and (max-width: 769px) {

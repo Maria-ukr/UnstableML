@@ -1,0 +1,78 @@
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ButtonRect from '../ButtonRect/ButtonRect';
+import './SecondSection.sass';
+import Cloud1 from './../../assets/images/сloud_1.png';
+import Cloud2 from './../../assets/images/сloud_2.png';
+
+export default function SecondSection() {
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl.from('.cloud1', { x: -700, duration: 1.6 }, '+=1.6')
+    .from('.cloud2', {
+      x: 700,
+      duration: 1.6,
+    }, "<");
+    gsap.utils.toArray(".cloud").forEach(randomFloat);
+    function randomFloat(element) {
+      gsap.to(element, {
+        x: gsap.utils.random([-20, 3]),
+        y: gsap.utils.random([-20, 10]),
+        ease: "sine.inOut",
+        autoRound: false,
+        duration: gsap.utils.random([1, 2]),
+        onComplete: () => randomFloat(element)
+      });
+      gsap.to(element, {
+        rotation: "+=10",
+        duration: 90,
+        onComplete: () => randomFloat(element)
+      });
+    }
+  });
+
+  return (
+    <>
+      <section className='container py-64 md:py-36 relative overflow-x-hidden'>
+        <div className='dreams relative'>
+          <img
+            src={Cloud1}
+            alt='cloud1'
+            className='cloud cloud1 absolute -left-2/3 -bottom-1/6 -z-1'
+          />
+          <img
+            src={Cloud2}
+            alt='cloud2'
+            className='cloud cloud2 absolute -right-2/3 -top-1/6 -z-1'
+          />
+          <div className='dreams__caption flex flex-col justify-start items-start w-max max-sm:mb-8 mb-36 md:mb-48'>
+            <p className='sup-text italic font-sans font-semibold place-self-end text-xl'>
+              AI Video Magic
+            </p>
+            <h3 className='font-sans font-medium'>Turn dreams</h3>
+            <h3 className='font-sans font-medium flex items-center justify-between'>
+              Into
+              <span className='font-serif font-semibold'>&nbsp;reality</span>
+              <span className='line ml-4 md:ml-10 mt-7'></span>
+            </h3>
+          </div>
+          <div className='dreams__content flex flex-col justify-start items-start'>
+            <h6 className='sup-text font-sans font-bold place-self-end text-xl mb-7 md:mb-10'>
+              All your favorite &nbsp;
+              <span className='font-serif font-bold italic'>
+                AI-powered
+              </span>{' '}
+              &nbsp;video generation models in one place.
+            </h6>
+            <p className='font-sans font-bold mb-9 md:mb-12 max-sm:pr-0 md:pr-6 text-xl'>
+              Explore our exclusive collection of cutting-edge models, each
+              uniquely crafted to bring your vision to life and transform your
+              text into breathtaking videos.
+            </p>
+            <ButtonRect text='Try now for free' />
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
