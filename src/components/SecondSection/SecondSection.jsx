@@ -56,7 +56,7 @@ export default function SecondSection() {
               uniquely crafted to bring your vision to life and transform your
               text into breathtaking videos.
             </p>
-            <ButtonRect text='Try now for free' />
+            <ButtonRect text='Try now for free' classes='text-xl' />
           </div>
         </div>
       </section>

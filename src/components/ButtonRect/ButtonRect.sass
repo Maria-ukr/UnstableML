@@ -3,10 +3,24 @@
   display: flex
   justify-content: center
   align-items: center
-  border-left: 2px solid var(--color-white)
-  border-right: 2px solid var(--color-white)
-  padding: 20px 40px
-  border-radius: 17px
+  height: 77px
+  width: 206px
+  position: relative
+  overflow: hidden
+  z-index: 33333
+  transition: all 0.7s linear
+  & .circle
+    position: absolute
+    border: 2px solid var(--color-white)
+    inset: 0
+    top: 50%
+    transform: translateY(-50%)
+    border-radius: 50%
+    height: 206px
+    width: 206px
+    z-index: -1
+    transition: all 0.7s linear
   &:hover
-    background-color: var(--color-white)
     color: var(--color-black)
+    & .circle
+      background-color: var(--color-white)
