@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper/modules';
+import VideoWrap from '../VideoWrap/VideoWrap';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -13,6 +14,7 @@ import ThirdVideo from './../../assets/videos/generation/horizontal_3.mp4';
 import ForthVideo from './../../assets/videos/generation/horizontal_4.mp4';
 import FifthVideo from './../../assets/videos/generation/square_5.mp4';
 import SixVideo from './../../assets/videos/generation/horizontal_6.mp4';
+import videoWater from './../../assets/videos/water.mp4';
 
 export default function BoxGallery() {
   const [widthScreen, setWidthScreen] = useState(window.innerWidth);
@@ -27,12 +29,35 @@ export default function BoxGallery() {
   }, []);
 
   return (
-    <div className='container gallery relative'>
-      <p className='gallery__caption'>Generation</p>
+    <section className='container gallery'>
+
+      <div className='gallery__caption'>
+        <video autoPlay muted loop playsInline className='h-auto clipped-video'>
+          <source src={videoWater} type='video/mp4' />
+          Your browser does not support the video tag.
+        </video>
+        <svg
+          width='100%'
+          // height='100%'
+        >
+          <clipPath id='text-overlay' width='100%' height='100%'>
+            <text
+              id="title"
+              x='0'
+              y='0'
+              width='100%'
+              // height='100%'
+              dy="0rem"
+            >
+              Generation
+            </text>
+          </clipPath>
+        </svg>
+      </div>
       <div className='gallery-wrap relative'>
         {widthScreen > 768 ? WithGrids : WithSlider}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -40,36 +65,16 @@ const WithGrids = (
   <>
     <div className='flex flex-wrap items-start justify-center gap-2 gallery__grid'>
       <div className='flex justify-center gap-2'>
-        <div className='w-[30%] ml-10'>
-          <video autoPlay muted loop playsInline className='h-full w-auto'>
-            <source src={FirstVideo} type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div className='w-[30%]'>
-          <video autoPlay muted loop playsInline className='h-full w-auto'>
-            <source src={SecondVideo} type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        <VideoWrap video={FirstVideo} classes='w-[30%] ml-10' />
+        <VideoWrap video={SecondVideo} classes='w-[30%]' />
       </div>
       <div className='flex gap-2'>
-        <div className='w-[50%] h-auto'>
-          <video autoPlay muted loop playsInline className='h-full w-auto'>
-            <source src={ThirdVideo} type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div className='w-[50%] h-auto'>
-          <video autoPlay muted loop playsInline className='h-full w-auto'>
-            <source src={ForthVideo} type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        <VideoWrap video={ThirdVideo} classes='w-[50%]' />
+        <VideoWrap video={ForthVideo} classes='w-[50%]' />
       </div>
 
-      <div className='flex items-center justify-center gap-2'>
-        <div className='grid__content w-[50%] h-full px-10'>
+      <div className='gallery__grid-content flex justify-center gap-2'>
+        <div className='gallery__grid-text h-full px-10'>
           <h4 className='font-sans font-medium text-3xl'>Transform</h4>
           <h4 className='font-sans font-medium text-3xl'>
             Your
@@ -81,12 +86,7 @@ const WithGrids = (
             endless.
           </p>
         </div>
-        <div className='w-[37%] h-auto'>
-          <video autoPlay muted loop playsInline className='h-full w-auto'>
-            <source src={SixVideo} type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        <VideoWrap video={SixVideo} classes='w-[37%] h-auto' />
       </div>
     </div>
   </>
@@ -130,12 +130,10 @@ const WithSlider = (
         SixVideo,
       ].map((videoSrc, index) => (
         <SwiperSlide key={index} className='gallery__slide'>
-          <div className='relative flex items-center justify-center'>
-            <video autoPlay muted loop playsInline className='h-full w-auto'>
-              <source src={videoSrc} type='video/mp4' />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+          <VideoWrap
+            video={videoSrc}
+            classes='relative flex items-center justify-center'
+          />
         </SwiperSlide>
       ))}
     </Swiper>

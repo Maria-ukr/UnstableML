@@ -24,9 +24,9 @@ export default function Header() {
 
   return (
     <header className='container header fixed w-full'>
-      <nav className='flex justify-between items-center gap-x-16 py-6'>
+      <nav className='flex justify-around md:justify-between items-center gap-x-0 md:gap-x-16 py-6'>
         <Logo size='full' />
-        <p className='header__version font-bold mr-auto'>
+        <p className='header__version font-bold mr-auto max-sm:ml-8'>
           V.4.26
         </p>
         <div className='header__ai relative ml-auto mr-8 md:mr-[4.5rem]'>
@@ -34,7 +34,7 @@ export default function Header() {
         </div>
         <a
           href='#'
-          className='header__btn flex justify-center items-center font-sansfont-bold px-8 py-3.5 rounded-[62px]'
+          className='header__btn flex justify-center items-center font-sans font-bold px-8 py-3.5 rounded-[62px]'
         >
           Try Now
         </a>
