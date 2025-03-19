@@ -1,0 +1,58 @@
+.hero
+  @media (max-width: 769px)
+  &__circle
+    width: 3rem
+    height: 3rem
+    border-radius: 50%
+    background-color: rgba(255, 255, 255, 0.3)
+    bottom: 2rem
+    left: 50%
+    z-index: 33
+    animation: spin 4s linear infinite
+  &__caption
+    margin: 0 auto
+    @media (max-width: 769px)
+      align-items: center
+      width: 100%
+    & .sup-text 
+      margin-bottom: -0.5rem
+      margin-right: 16rem
+      @media (max-width: 569px)
+        font-size: 0.8rem
+        margin-right: 8.4rem
+    & h1
+      line-height: 0.82
+      & ~ h1 
+        letter-spacing: 0%
+        @media (max-width: 769px)
+          align-self: center
+          margin-right: -4rem
+        @media (max-width: 569px)
+          margin-right: 0
+          align-self: end
+      &:first-of-type
+        @media (max-width: 769px)
+          margin-left: -4rem
+        @media (max-width: 569px)
+          margin-left: 0
+      & .line
+        width: 8rem
+        height: 2px
+        background-color: var(--color-white)
+        @media (max-width: 769px)
+          width: 4rem
+
+@keyframes spin 
+  0% 
+    transform: rotate(0deg)
+    background: conic-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 0%, white 50%, white 0%)
+  25% 
+    transform: rotate(90deg)
+    background: conic-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.7) 50%, white 25%, white 25%)
+  50% 
+    transform: rotate(180deg)
+    background: conic-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.7) 75%, white 25%, white 75%)
+  100% 
+    transform: rotate(360deg)
+    background: conic-gradient(white 100%, white 100%)
+  

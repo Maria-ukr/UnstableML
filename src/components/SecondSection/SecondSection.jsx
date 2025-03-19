@@ -20,8 +20,8 @@ export default function SecondSection() {
 
   return (
     <>
-      <section className='container py-64 md:py-36 relative overflow-x-hidden'>
-        <div className='dreams relative'>
+      <section className='mt-20 py-64 md:py-32 overflow-x-hidden'>
+        <div className='dreams container relative'>
           <img
             src={Cloud1}
             alt='cloud1'

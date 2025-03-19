@@ -40,11 +40,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-image: url(./bg.jpg);
-  background-position: top center;
+  background-position: center 100vh;
   background-size: cover;
+  background-repeat: no-repeat;
   background-color: rgb(245, 160, 159);
   position: relative;
-  padding-top: 130px;
 }
 
 body::before {
@@ -64,6 +64,11 @@ body::after {
   height: 100%;
   background-color: rgb(255, 255, 255);
   z-index: -1;
+}
+
+h1 {
+  font-size: clamp(4rem, -0.7rem + 14.5vw, 6.9rem);
+  letter-spacing: -4%;
 }
 
 h2 {
