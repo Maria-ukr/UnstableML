@@ -39,6 +39,9 @@ body {
   overflow-x: hidden;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url(./bg.jpg);
+  background-position: top center;
+  background-size: cover;
   background-color: rgb(245, 160, 159);
   position: relative;
   padding-top: 130px;
