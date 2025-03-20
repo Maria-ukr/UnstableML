@@ -5,6 +5,7 @@ import BoxGallery from './components/BoxGallery/BoxGallery';
 import SecondSection from './components/SecondSection/SecondSection';
 import Hero from './components/Hero/Hero';
 import Soundscape from './components/Soundscape/Soundscape';
+import Enhance from './components/Enhance/Enhance';
 import './App.sass';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <SecondSection />
       <BoxGallery />
       <Soundscape />
+      <Enhance />
       <HoldUp />
       <Footer />
     </>

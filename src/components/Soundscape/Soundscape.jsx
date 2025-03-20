@@ -34,7 +34,7 @@ export default function Soundscape() {
           Your browser does not support the video tag.
         </video>
         <svg width='100%'>
-          <clipPath id='text-overlay' width='100%' height='100%'>
+          <clipPath id='soundscape-overlay' width='100%' height='100%'>
             <text id='title' x='0' y='0' width='100%' dy='0rem'>
               Soundscape
             </text>
