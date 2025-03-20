@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar } from 'swiper/modules';
 import VideoWrap from '../VideoWrap/VideoWrap';
+import SliderWrap from '../SliderWrap/SliderWrap';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -30,7 +29,6 @@ export default function BoxGallery() {
 
   return (
     <section className='container gallery'>
-
       <div className='gallery__caption'>
         <video autoPlay muted loop playsInline className='h-auto clipped-video'>
           <source src={videoWater} type='video/mp4' />
@@ -42,12 +40,12 @@ export default function BoxGallery() {
         >
           <clipPath id='text-overlay' width='100%' height='100%'>
             <text
-              id="title"
+              id='title'
               x='0'
               y='0'
               width='100%'
               // height='100%'
-              dy="0rem"
+              dy='0rem'
             >
               Generation
             </text>
@@ -93,7 +91,16 @@ const WithGrids = (
 );
 
 const WithSlider = (
-  <>
+  <SliderWrap
+    slides={[
+      FirstVideo,
+      SecondVideo,
+      ThirdVideo,
+      ForthVideo,
+      FifthVideo,
+      SixVideo,
+    ]}
+  >
     <div className='gallery__content'>
       <h4 className='font-sans font-medium text-5xl'>Transform</h4>
       <h4 className='font-sans font-medium text-5xl'>
@@ -104,38 +111,5 @@ const WithSlider = (
         storytelling to content creation, the possibilities are endless.
       </p>
     </div>
-    <Swiper
-      className='gallery__slider'
-      slidesPerView={1.2}
-      loop={true}
-      spaceBetween={12}
-      scrollbar={{
-        draggable: true,
-        hide: true,
-      }}
-      modules={[Scrollbar]}
-      breakpoints={{
-        540: {
-          slidesPerView: 1.3,
-          spaceBetween: 22,
-        },
-      }}
-    >
-      {[
-        FirstVideo,
-        SecondVideo,
-        ThirdVideo,
-        ForthVideo,
-        FifthVideo,
-        SixVideo,
-      ].map((videoSrc, index) => (
-        <SwiperSlide key={index} className='gallery__slide'>
-          <VideoWrap
-            video={videoSrc}
-            classes='relative flex items-center justify-center'
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </>
+  </SliderWrap>
 );

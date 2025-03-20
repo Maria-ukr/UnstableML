@@ -26,7 +26,7 @@ export default function Header() {
     <header className='container header fixed w-full'>
       <nav className='flex justify-between md:justify-between items-center gap-x-8 md:gap-x-16 py-6'>
         <Logo size='full' />
-        <p className='header__version font-bold ml-auto mr-auto max-sm:ml-8'>
+        <p className='header__version font-bold ml-auto mr-auto'>
           V.4.26
         </p>
         <div className='header__ai relative ml-auto mr-8 md:mr-[4.5rem]'>

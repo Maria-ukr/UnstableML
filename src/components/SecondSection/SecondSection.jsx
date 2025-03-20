@@ -20,7 +20,7 @@ export default function SecondSection() {
 
   return (
     <>
-      <section className='mt-20 py-64 md:py-32 overflow-x-hidden'>
+      <section className='pt-86 pb-64 md:py-32 overflow-x-hidden'>
         <div className='dreams container relative'>
           <img
             src={Cloud1}
@@ -32,7 +32,7 @@ export default function SecondSection() {
             alt='cloud2'
             className='cloud2 absolute -right-2/3 -top-1/6 -z-1'
           />
-          <div className='dreams__caption flex flex-col justify-start items-start w-max max-sm:mb-8 mb-36 md:mb-48'>
+          <div className='dreams__caption flex flex-col justify-start items-start w-max max-sm:mb-8 md:mb-48'>
             <p className='sup-text italic font-sans font-semibold place-self-end text-xl'>
               AI Video Magic
             </p>
