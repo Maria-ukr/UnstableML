@@ -20,7 +20,7 @@ export default function SecondSection() {
 
   return (
     <>
-      <section className='pt-86 pb-64 md:py-32 overflow-x-hidden'>
+      <section className='pt-86 pb-64 md:py-32 overflow-hidden'>
         <div className='dreams container relative'>
           <img
             src={Cloud1}

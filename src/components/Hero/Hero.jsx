@@ -5,11 +5,12 @@ import HeroTabletVideo from './../../assets/videos/hero_cycle_tablet.mp4';
 import HeroMobileVideo from './../../assets/videos/hero_cycle_mob.mp4';
 
 import './Hero.sass';
+import Portal from '../Portal/Portal';
 
 export default function Hero() {
   return (
     <>
-      <section className='hero relative overflow-x-hidden h-screen w-full'>
+      <section className='hero overflow-x-hidden h-screen w-full relative'>
         <video
           autoPlay
           muted
@@ -35,6 +36,7 @@ export default function Hero() {
             </h1>
           </div>
         </div>
+        <Portal />
         <div className='hero__circle absolute'></div>
       </section>
     </>
