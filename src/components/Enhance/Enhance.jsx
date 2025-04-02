@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import VideoWrap from '../VideoWrap/VideoWrap';
 import SliderWrap from '../SliderWrap/SliderWrap';
+import { matchMediaScreen } from '../../hooks/match-media';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -15,16 +16,7 @@ import FifthVideo from './../../assets/videos/enhance/enhance5.mov';
 import videoWater from './../../assets/videos/water.mp4';
 
 export default function Enhance() {
-  const [widthScreen, setWidthScreen] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleWidth = () => {
-      setWidthScreen(window.innerWidth);
-    };
-    window.addEventListener('resize', handleWidth);
-    return () => {
-      window.removeEventListener('resize', handleWidth);
-    };
-  }, []);
+  const {isMobile} = matchMediaScreen({widthScreen: 768});
 
   return (
     <section className='container gallery'>
@@ -52,7 +44,7 @@ export default function Enhance() {
         </svg>
       </div>
       <div className='gallery-wrap relative'>
-        {widthScreen > 768 ? WithGrids : WithSlider}
+      {isMobile ? WithSlider : WithGrids}
       </div>
     </section>
   );

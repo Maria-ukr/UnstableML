@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import VideoWrap from '../VideoWrap/VideoWrap';
 import SliderWrap from '../SliderWrap/SliderWrap';
+import { matchMediaScreen } from '../../hooks/match-media';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -16,16 +17,7 @@ import SixVideo from './../../assets/videos/generation/horizontal_6.mp4';
 import videoWater from './../../assets/videos/water.mp4';
 
 export default function BoxGallery() {
-  const [widthScreen, setWidthScreen] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleWidth = () => {
-      setWidthScreen(window.innerWidth);
-    };
-    window.addEventListener('resize', handleWidth);
-    return () => {
-      window.removeEventListener('resize', handleWidth);
-    };
-  }, []);
+  const {isMobile} = matchMediaScreen({widthScreen: 768});
 
   return (
     <section className='container gallery'>
@@ -36,7 +28,6 @@ export default function BoxGallery() {
         </video>
         <svg
           width='100%'
-          // height='100%'
         >
           <clipPath id='text-overlay' width='100%' height='100%'>
             <text
@@ -44,7 +35,6 @@ export default function BoxGallery() {
               x='0'
               y='0'
               width='100%'
-              // height='100%'
               dy='0rem'
             >
               Generation
@@ -53,7 +43,7 @@ export default function BoxGallery() {
         </svg>
       </div>
       <div className='gallery-wrap relative'>
-        {widthScreen > 768 ? WithGrids : WithSlider}
+        {isMobile ? WithSlider : WithGrids}
       </div>
     </section>
   );
