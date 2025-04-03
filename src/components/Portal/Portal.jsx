@@ -3,21 +3,17 @@ import React from 'react';
 import VideoWrap from '../VideoWrap/VideoWrap';
 import './Portal.sass';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import FirstVideo from './../../assets/videos/enhance/enhance1.mov';
-import SecondVideo from './../../assets/videos/enhance/enhance2.mov';
-import ThirdVideo from './../../assets/videos/enhance/enhance3.mov';
 import { Autoplay, FreeMode, Scrollbar } from 'swiper/modules';
-import ForthVideo from './../../assets/videos/enhance/enhance4.mov';
-// import FifthVideo from './../../assets/videos/enhance/enhance5.mov';
-// const videos = [FirstVideo, SecondVideo]
+
+const baseUrl = import.meta.env.BASE_URL;
+
 export default function Portal() {
   return (
     <section className='portal w-full'>
       <div className='portal-wrap'>
         <div className='portal-side portal-side__left '>
           <Swiper
-            className=''
+            className='portal-slider'
             slidesPerView={2}
             speed={10000}
             loop={true}
@@ -34,20 +30,20 @@ export default function Portal() {
             modules={[Autoplay, FreeMode, Scrollbar]}
           >
             <SwiperSlide>
-              <VideoWrap video={FirstVideo} classes='w-[500px] h-[350px]' />
+              <VideoWrap video={`${baseUrl}videos/enhance/enhance1.mov`} classes='w-[500px] h-[350px]' />
             </SwiperSlide>
             <SwiperSlide>
-              <VideoWrap video={SecondVideo} classes='w-[500px] h-[350px]' />
+              <VideoWrap video={`${baseUrl}videos/enhance/enhance2.mov`} classes='w-[500px] h-[350px]' />
             </SwiperSlide>
             <SwiperSlide>
               <VideoWrap
-                video={ThirdVideo}
+                video={`${baseUrl}videos/enhance/enhance3.mov`}
                 classes='w-[500px] h-[350px]'
               />
             </SwiperSlide>
             <SwiperSlide>
               <VideoWrap
-                video={ForthVideo}
+                video={`${baseUrl}videos/enhance/enhance4.mov`}
                 classes='w-[500px] h-[350px]'
               />
             </SwiperSlide>
@@ -73,25 +69,25 @@ export default function Portal() {
           >
             <SwiperSlide>
               <VideoWrap
-                video={FirstVideo}
+                video={`${baseUrl}videos/enhance/enhance1.mov`}
                 classes='w-[500px] h-[350px] slide'
               />
             </SwiperSlide>
             <SwiperSlide>
               <VideoWrap
-                video={SecondVideo}
+                video={`${baseUrl}videos/enhance/enhance2.mov`}
                 classes='w-[500px] h-[350px] slide'
               />
             </SwiperSlide>
             <SwiperSlide>
               <VideoWrap
-                video={ThirdVideo}
+                video={`${baseUrl}videos/enhance/enhance3.mov`}
                 classes='w-[500px] h-[350px] slide'
               />
             </SwiperSlide>
             <SwiperSlide>
               <VideoWrap
-                video={ForthVideo}
+                video={`${baseUrl}videos/enhance/enhance4.mov`}
                 classes='w-[500px] h-[350px]'
               />
             </SwiperSlide>

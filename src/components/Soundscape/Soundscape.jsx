@@ -1,28 +1,30 @@
 import React from 'react';
+import { matchMediaScreen } from '../../hooks/match-media';
 import VideoWrap from '../VideoWrap/VideoWrap';
 import SliderWrap from '../SliderWrap/SliderWrap';
-import { matchMediaScreen } from '../../hooks/match-media';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import './Soundscape.sass';
 
-import FirstVideo from './../../assets/videos/soundscape/vid1.mp4';
-import SecondVideo from './../../assets/videos/soundscape/vid2.mp4';
-import ThirdVideo from './../../assets/videos/soundscape/vid3.mp4';
-import ForthVideo from './../../assets/videos/soundscape/vid4.mp4';
-import FifthVideo from './../../assets/videos/soundscape/vid5.mp4';
-import videoWater from './../../assets/videos/water.mp4';
+const baseUrl = import.meta.env.BASE_URL;
 
 export default function Soundscape() {
-  const {isMobile} = matchMediaScreen({widthScreen: 768});
+  const { isMobile } = matchMediaScreen({ widthScreen: 768 });
 
   return (
-    <section className='container soundscape'>
-      <div className='soundscape__caption'>
-        <video autoPlay muted loop playsInline className='h-auto clipped-video'>
-          <source src={videoWater} type='video/mp4' />
+    <section className='container gallery'>
+      <div className='gallery__caption soundscape'>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className='h-auto clipped-video clip'
+          style={{ '--clip-path': 'url(#soundscape-overlay)' }}
+        >
+          <source src={`${baseUrl}videos/water.mp4`} type='video/mp4' />
           Your browser does not support the video tag.
         </video>
         <svg width='100%'>
@@ -33,8 +35,8 @@ export default function Soundscape() {
           </clipPath>
         </svg>
       </div>
-      <div className='soundscape-wrap relative'>
-      {isMobile ? WithSlider : WithGrids}
+      <div className='gallery-wrap relative'>
+        {isMobile ? WithSlider : WithGrids}
       </div>
     </section>
   );
@@ -42,10 +44,13 @@ export default function Soundscape() {
 
 const WithGrids = (
   <>
-    <div className='flex flex-wrap items-start justify-center gap-2 soundscape__grid'>
-      <div className='soundscape__grid-content flex justify-center gap-2'>
-        <VideoWrap video={FirstVideo} classes='w-[383px] h-[240px]' />
-        <div className='soundscape__grid-text h-full px-10'>
+    <div className='flex flex-wrap items-start justify-center gap-2 gallery__grid'>
+      <div className='gallery__grid-content flex justify-center gap-2'>
+        <VideoWrap
+          video={`${baseUrl}videos/soundscape/vid1.mp4`}
+          classes='w-[383px] h-[240px]'
+        />
+        <div className='gallery__grid-text h-full px-10'>
           <h4 className='font-sans font-medium text-3xl'>
             Create videos packed
           </h4>
@@ -55,7 +60,7 @@ const WithGrids = (
               synchronized audio
             </span>
           </h4>
-          <p className='soundscape__content-text'>
+          <p className='gallery__content-text soundscape-text'>
             Effortlessly create stunning videos with perfectly synchronized
             audio. Our cutting-edge audio diffusion model ensures high quality
             sound with every generation, regardless of the video model you
@@ -64,12 +69,24 @@ const WithGrids = (
         </div>
       </div>
       <div className='flex gap-2'>
-        <VideoWrap video={SecondVideo} classes='w-[50%] h-[280px]' />
-        <VideoWrap video={ThirdVideo} classes='w-[50%] h-[280px]' />
+        <VideoWrap
+          video={`${baseUrl}videos/soundscape/vid2.mp4`}
+          classes='w-[50%] h-[280px]'
+        />
+        <VideoWrap
+          video={`${baseUrl}videos/soundscape/vid3.mp4`}
+          classes='w-[50%] h-[280px]'
+        />
       </div>
       <div className='flex justify-center gap-2'>
-        <VideoWrap video={ForthVideo} classes='w-[421px] h-[211px] ml-4' />
-        <VideoWrap video={FifthVideo} classes='w-[382px] h-[252px]' />
+        <VideoWrap
+          video={`${baseUrl}videos/soundscape/vid4.mp4`}
+          classes='w-[421px] h-[211px] ml-4'
+        />
+        <VideoWrap
+          video={`${baseUrl}videos/soundscape/vid5.mp4`}
+          classes='w-[382px] h-[252px]'
+        />
       </div>
     </div>
   </>
@@ -77,7 +94,13 @@ const WithGrids = (
 
 const WithSlider = (
   <SliderWrap
-    slides={[FirstVideo, SecondVideo, ThirdVideo, ForthVideo, FifthVideo]}
+    slides={[
+      `${baseUrl}videos/soundscape/vid1.mp4`,
+      `${baseUrl}videos/soundscape/vid2.mp4`,
+      `${baseUrl}videos/soundscape/vid3.mp4`,
+      `${baseUrl}videos/soundscape/vid4.mp4`,
+      `${baseUrl}videos/soundscape/vid5.mp4`,
+    ]}
   >
     <div className='soundscape__content'>
       <h4 className='font-sans font-medium text-5xl'>

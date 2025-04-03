@@ -4,10 +4,10 @@ export default function ButtonRect(props) {
   const { text, classes } = props;
   return (
     <>
-      <button className={`btn-rounded text-2xl font-bold relative ${classes}`}>
+      <a href="/" className={`block btn-rounded text-2xl font-bold relative ${classes}`}>
         {text}
         <span className='circle'></span>
-      </button>
+      </a>
     </>
   );
 }

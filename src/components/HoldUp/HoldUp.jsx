@@ -5,10 +5,10 @@ import ButtonRect from '../ButtonRect/ButtonRect';
 export default function HoldUp() {
   return (
     <>
-      <section className='container pt-16 pb-24'>
+      <section className='container pt-16 pb-24 relative z-40'>
         <div
           style={{ backgroundImage: `url(${BgImage})` }}
-          className='hold-up rounded-2xl overflow-hidden h-[80vh] max-md:mx-7'
+          className='hold-up rounded-2xl overflow-hidden h-[80vh] max-md:mx-7 z-40'
         >
           <div className='flex flex-col justify-center items-center h-full w-max mx-auto px-6'>
             <h2 className='font-sans flex items-center font-medium'>

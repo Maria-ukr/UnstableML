@@ -1,7 +1,7 @@
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HoldUp from './components/HoldUp/HoldUp';
-import BoxGallery from './components/BoxGallery/BoxGallery';
+import Motion from './components/Motion/Motion';
 import SecondSection from './components/SecondSection/SecondSection';
 import Hero from './components/Hero/Hero';
 import Soundscape from './components/Soundscape/Soundscape';
@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Hero />
       <SecondSection />
-      <BoxGallery />
+      <Motion />
       <Soundscape />
       <Enhance />
       <HoldUp />

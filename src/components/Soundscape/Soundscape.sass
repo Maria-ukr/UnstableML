@@ -1,81 +1,8 @@
 .soundscape
-  min-height: 100vh
-  position: relative
-  &__grid
-    z-index: 8888
-    width: 75%
-    margin: 5rem auto
-    @media (max-width: 992px)
-      width: 85%
-    &-content
-      align-items: center
-      @media (max-width: 1280px)
-        align-items: start
-    &-text
-      width: 50%
-      @media (max-width: 1280px)
-        align-items: start
-        width: 60%
-        padding-right: 0
-  &__content
-    margin: 0 auto
-    padding: 0 5.2rem
-    width: 80%
+  &-text
     @media (max-width: 769px)
-      margin: 0
-      margin-left: auto
-      padding: 0
-      padding-right: 1.5rem
-    @media (max-width: 546px)
-      width: 100%
-    &-text
-      margin-top: 2.25rem
-      padding-left: 3.5rem
-      @media (max-width: 769px)
-        padding-right: 4rem
-      @media (max-width: 546px)
-        padding: 0
+      padding-right: 4rem
 
-.soundscape__caption
-  position: absolute
-  width: 100vh
-  height: 140px
-  transform: rotate(-90deg)
-  transform-origin: top left
-  top: 60%
-  left: 3%
-  right: 0
-  bottom: auto
-  z-index: 99999
-  background-color: transparent
+.soundscape
   @media (max-width: 505px)
     top: 95%
-    height: 70px
-    left: 9%
-  & video 
-    width: 100%
-    z-index: -1
-    position: absolute
-    object-fit: cover
-    top: 0
-    left: 0
-  & svg
-    position: absolute
-    display: block
-    top: 0
-    z-index: 2
-    left: 0
-    & text 
-      font-size: 7.5rem
-      text-transform: uppercase
-      line-height: 1
-      font-weight: 700
-      letter-spacing: -0.5rem
-      white-space: nowrap
-      dominant-baseline: hanging
-      @media (max-width: 375px)
-        font-size: 4.5rem
-  & .clipped-video 
-    -webkit-clip-path: url(#soundscape-overlay)
-    clip-path: url(#soundscape-overlay)
-    width: 100%
