@@ -15,8 +15,6 @@
     display: flex
     justify-content: center
     align-items: center
-    .swiper-wrapper
-      z-index: 37!important
     &__left
       width: 50%
       transform-origin: center center
@@ -25,3 +23,29 @@
       width: 50%
       transform-origin: center center
       transform: rotateY(-25deg) translateY(80px)
+
+  &-slider
+    display: flex
+    gap: 10px
+    overflow: hidden
+    width: 100%
+    position: relative
+    &__track
+      display: flex
+      gap: 10px
+      width: max-content
+      animation: slideAnimationLeft 20s linear infinite
+      &.right-track
+        animation: slideAnimationRight 20s linear infinite
+
+@keyframes slideAnimationLeft 
+  from 
+    transform: translateX(0)
+  to 
+    transform: translateX(-50%)
+
+@keyframes slideAnimationRight
+  from 
+    transform: translateX(-50%)
+  to 
+    transform: translateX(0)
