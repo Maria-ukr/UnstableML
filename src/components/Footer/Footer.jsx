@@ -1,12 +1,12 @@
 import React from 'react';
-import Logo from '../Logo/Logo';
+import LogoImgMob from '../../assets/images/mob-logo.svg';
 import './Footer.sass';
 
 export default function Footer() {
   return (
     <footer className='container footer w-full font-medium'>
       <div className='flex justify-center md:justify-between py-10 flex-wrap md:flex-nowrap max-md:items-center max-md:gap-y-12'>
-        <Logo classes='w-[3.8rem] max-md:mr-auto md:max-w-28 self-start' />
+        <img src={LogoImgMob} classes='w-[3.8rem] max-md:mr-auto md:max-w-28 self-start h-fit' alt='logo' />
         <div className='footer__menu flex gap-44 max-md:mr-auto'>
           <ul className='footer__menu-list'>
             <li>
