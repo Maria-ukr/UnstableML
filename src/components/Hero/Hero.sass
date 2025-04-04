@@ -1,14 +1,5 @@
 .hero
   @media (max-width: 769px)
-  &__circle
-    width: 3rem
-    height: 3rem
-    border-radius: 50%
-    background-color: conic-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3) 0%)
-    bottom: 2rem
-    left: 50%
-    z-index: 33
-    animation: spin 4s linear infinite
   &__caption
     margin: 0 auto
     @media (max-width: 769px)
@@ -41,18 +32,4 @@
         background-color: var(--color-white)
         @media (max-width: 769px)
           width: 4rem
-
-@keyframes spin 
-  0% 
-    // transform: rotate(0deg)
-    background: conic-gradient(rgba(255, 255, 255, 0.3) 0%, white 25%, white 0%)
-  25% 
-    // transform: rotate(45deg)
-    background: conic-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.7) 50%, white 50%, white 75%)
-  50% 
-    // transform: rotate(180deg)
-    background: conic-gradient(rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.7) 25%, white 25%, white 25%)
-  100% 
-    // transform: rotate(360deg)
-    background: conic-gradient(white 100%, white 100%)
   

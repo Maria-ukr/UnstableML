@@ -1,13 +1,13 @@
-// import gsap from 'gsap';
-// import { useGSAP } from '@gsap/react';
+import Portal from '../Portal/Portal';
+import Preloader from '../Preloader/Preloader';
 import HeroVideo from './../../assets/videos/hero.mp4';
 import HeroTabletVideo from './../../assets/videos/hero_cycle_tablet.mp4';
 import HeroMobileVideo from './../../assets/videos/hero_cycle_mob.mp4';
 
 import './Hero.sass';
-import Portal from '../Portal/Portal';
 
 export default function Hero() {
+  
   return (
     <>
       <section className='hero overflow-x-hidden h-screen w-full relative'>
@@ -37,7 +37,7 @@ export default function Hero() {
           </div>
         </div>
         <Portal />
-        <div className='hero__circle absolute'></div>
+        <Preloader />
       </section>
     </>
   );
