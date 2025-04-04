@@ -15,10 +15,15 @@
     align-items: center
     justify-content: center
     margin: 0
+    & > div
+      overflow: hidden
+      width: 100%
+      @media (max-width: 768px)
+        height: 312px
+      @media (max-width: 375px)
+        height: 164px
     video
-      max-height: 19.5rem
-      width: auto
+      width: 100%
       margin: 0
       display: block
-      @media (max-width: 760px)
-        max-height: auto
+      object-fit: cover
