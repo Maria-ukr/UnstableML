@@ -102,14 +102,14 @@ const WithSlider = (
       `${baseUrl}videos/soundscape/vid5.mp4`,
     ]}
   >
-    <div className='soundscape__content'>
+    <div className='gallery__content'>
       <h4 className='font-sans font-medium text-5xl'>
         Create videos packed with &nbsp;
         <span className='font-serif font-semibold text-5xl'>
           synchronized audio
         </span>
       </h4>
-      <p className='soundscape__content-text'>
+      <p className='gallery__content-text'>
         Effortlessly create stunning videos with perfectly synchronized audio.
         Our cutting-edge audio diffusion model ensures high quality sound with
         every generation, regardless of the video model you choose.

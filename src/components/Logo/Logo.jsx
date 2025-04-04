@@ -3,7 +3,7 @@ import LogoImg from '../../assets/images/full-logo.svg';
 import LogoImgMob from '../../assets/images/mob-logo.svg';
 
 export default function Logo(props) {
-  const { isMobile } = matchMediaScreen({ widthScreen: 768 });
+  const { isMobile } = matchMediaScreen({ widthScreen: 767 });
 
   return (
     <img

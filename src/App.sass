@@ -2,6 +2,11 @@
   min-height: 100vh
   position: relative
   z-index: 50
+  display: flex
+  justify-content: center
+  align-items: center
+  @media (max-width: 768px)
+    display: block
   &__grid
     z-index: 8888
     width: 75%
@@ -35,18 +40,19 @@
   position: absolute
   width: 100vh
   height: 140px
-  transform: rotate(-90deg)
+  transform: rotate(-90deg) translateX(-50%)
   transform-origin: top left
-  top: 60%
+  top: 0
   left: 3%
-  right: 0
-  bottom: auto
+  right: auto
+  bottom: 13%
   z-index: 99999
   background-color: transparent
-  @media (max-width: 505px)
+  margin: auto 0
+  @media (max-width: 678px)
     height: 70px
-    top: 77%
-    left: 9%
+    bottom: 27%
+    left: 5%
   & video 
     width: 100%
     z-index: -1
@@ -68,5 +74,5 @@
       letter-spacing: -0.05em
       white-space: nowrap
       dominant-baseline: hanging
-      @media (max-width: 375px)
-        font-size: 4.5rem
+      @media (max-width: 768px)
+        font-size: calc(59px + (110 - 58) * (100vw - 375px) / (1600 - 375))
