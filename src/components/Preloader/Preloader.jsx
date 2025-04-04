@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import './Preloader.sass';
 
 export default function Preloader() {
   useEffect(() => {
@@ -84,7 +85,7 @@ export default function Preloader() {
   }, []);
   return (
     <canvas
-      className='hero__circle absolute'
+      className='circle absolute'
       id='animationCanvas'
       width='60'
       height='60'
