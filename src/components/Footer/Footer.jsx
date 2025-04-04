@@ -5,8 +5,8 @@ import './Footer.sass';
 export default function Footer() {
   return (
     <footer className='container footer w-full font-medium'>
-      <div className='flex justify-center md:justify-between py-10 flex-wrap md:flex-nowrap max-md:items-center max-md:gap-y-12'>
-        <img src={LogoImgMob} classes='w-[3.8rem] max-md:mr-auto md:max-w-28 self-start h-fit' alt='logo' />
+      <div className='flex justify-center md:justify-between py-10 flex-wrap md:flex-nowrap max-md:items-center max-md:gap-y-12 footer-wrap'>
+        <img src={LogoImgMob} className='max-md:mr-auto self-start h-fit footer__logo' alt='logo' />
         <div className='footer__menu flex gap-44 max-md:mr-auto'>
           <ul className='footer__menu-list'>
             <li>
@@ -28,7 +28,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className='footer__socials grid grid-cols-1 md:grid-cols-2 max-md:w-full max-md:place-items-center'>
+        <div className='footer__socials grid grid-cols-1 md:grid-cols-2 max-md:w-full pb-6'>
           <div className='footer__socials-line relative'></div>
           <ul className='footer__socials-list'>
             <li className='footer__socials-item'>
