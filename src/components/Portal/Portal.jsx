@@ -12,7 +12,7 @@ export default function Portal() {
           <div className='portal-slider'>
             <div className='portal-slider__track'>
               {[...Array(2)].map((_, i) => (
-                <>
+                <React.Fragment key={`portal-slider${i}`}>
                   <VideoWrap
                     video={`${baseUrl}videos/enhance/enhance1.mov`}
                     classes='w-[500px] h-[350px]'
@@ -33,7 +33,7 @@ export default function Portal() {
                     classes='w-[500px] h-[350px]'
                     key={`v4-${i}`}
                   />
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>
@@ -42,7 +42,7 @@ export default function Portal() {
           <div className='portal-slider'>
             <div className='portal-slider__track right-track'>
               {[...Array(2)].map((_, i) => (
-                <>
+                <React.Fragment key={`portal-slider${i}`}>
                   <VideoWrap
                     video={`${baseUrl}videos/enhance/enhance1.mov`}
                     classes='w-[500px] h-[350px]'
@@ -63,7 +63,7 @@ export default function Portal() {
                     classes='w-[500px] h-[350px]'
                     key={`v4-${i}`}
                   />
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>

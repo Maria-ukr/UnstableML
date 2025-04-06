@@ -7,7 +7,6 @@ export const matchMediaScreen = (props) => {
   );
   useEffect(() => {
     const mediaQuery = window.matchMedia(`(max-width: ${widthScreen}px)`);
-    console.log('mediaQuery', mediaQuery)
     const handleWidth = (e) => {
       setIsMobile(e.matches);
     };
