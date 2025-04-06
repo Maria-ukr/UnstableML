@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import './Preloader.sass';
+import './CircleLoader.sass';
 
-export default function Preloader() {
+export default function CircleLoader() {
   useEffect(() => {
     const canvas = document.getElementById('animationCanvas');
     const ctx = canvas.getContext('2d');

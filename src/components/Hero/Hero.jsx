@@ -1,5 +1,5 @@
 import Portal from '../Portal/Portal';
-import Preloader from '../Preloader/Preloader';
+import CircleLoader from '../CircleLoader/CircleLoader';
 import HeroVideo from './../../assets/videos/hero.mp4';
 import HeroTabletVideo from './../../assets/videos/hero_cycle_tablet.mp4';
 import HeroMobileVideo from './../../assets/videos/hero_cycle_mob.mp4';
@@ -44,7 +44,7 @@ export default function Hero() {
           </div>
         </div>
         <Portal />
-        <Preloader />
+        <CircleLoader />
       </section>
     </>
   );
