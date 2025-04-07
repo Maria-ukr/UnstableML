@@ -6,11 +6,13 @@ import SecondSection from './components/SecondSection/SecondSection';
 import Hero from './components/Hero/Hero';
 import Soundscape from './components/Soundscape/Soundscape';
 import Enhance from './components/Enhance/Enhance';
+import Preloader from './components/Preloader/Preloader';
 import './App.sass';
 
 function App() {
   return (
     <>
+      <Preloader />
       <Header />
       <Hero />
       <SecondSection />

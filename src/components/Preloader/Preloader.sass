@@ -1,0 +1,49 @@
+.preloader
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  overflow: hidden
+  @media (max-width: 769px)
+    padding: 3.7rem
+  @media (max-width: 618px)
+    align-items: center
+    padding-bottom: 1.1rem
+  &__logo
+    width: calc(64px + (88 - 64) * (100vw - 375px) / (1600 - 375))
+    position: absolute
+    @media (max-width: 618px)
+      top: 3.7rem
+  &__bottom
+    & div > p 
+      @media (max-width: 618px)
+      text-align: center
+    @media (max-width: 618px)
+      flex-direction: column
+      align-items: center
+      height: 50vh
+  & .creation
+    margin-left: 1.3rem
+    @media (max-width: 618px)
+      align-self: center
+    &::before
+      content: ''
+      position: absolute
+      left: -1.3rem
+      bottom: 0.3rem
+      background-color: var(--color-white)
+      border-radius: 50%
+      width: 0.9rem
+      height: 0.9rem
+
+.progress-bar 
+  height: 2px
+  width: 304px
+  background-color: #ffffff60
+  @media (max-width: 769px)
+    width: 285px
+  @media (max-width: 440px)
+    width: 335px
+  & > span
+    display: block
+    height: 100%
+    background-color: #ffffff
