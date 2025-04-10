@@ -7,6 +7,7 @@ import Hero from './components/Hero/Hero';
 import Soundscape from './components/Soundscape/Soundscape';
 import Enhance from './components/Enhance/Enhance';
 import Preloader from './components/Preloader/Preloader';
+import ThirdSection from './components/ThirdSection/ThirdSection';
 import './App.sass';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Header />
       <Hero />
       <SecondSection />
+      <ThirdSection />
       <Motion />
       <Soundscape />
       <Enhance />

@@ -95,6 +95,11 @@ h6 {
   line-height: 120%;
 }
 
+video {
+  width: 100%;
+  object-fit: cover;
+}
+
 @media screen and (max-width: 769px) {
   body::after {
     right: 20%;

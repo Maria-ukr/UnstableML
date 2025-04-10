@@ -37,6 +37,11 @@
       animation: slideAnimationLeft 20s linear infinite
       &.right-track
         animation: slideAnimationRight 20s linear infinite
+      & > div
+        transition: all 0.5s linear
+        transform-origin: center center
+        &:hover
+          transform: scale(1.2)
 
 @keyframes slideAnimationLeft 
   from 
