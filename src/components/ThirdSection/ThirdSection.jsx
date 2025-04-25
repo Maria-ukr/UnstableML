@@ -55,7 +55,6 @@ export default function ThirdSection() {
           },
           {
             scale: 1.7,
-            opacity: 1,
             duration: 1
           }
         ).to(video,

@@ -8,7 +8,7 @@ import Cloud2 from './../../assets/images/сloud_2.png';
 export default function SecondSection() {
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.from('.cloud1', { x: -700, duration: 1.6 }, '+=1.6').from(
+    tl.from('.cloud1', { x: -700, duration: 1.6 }, '+=2').from(
       '.cloud2',
       {
         x: 700,
@@ -16,6 +16,8 @@ export default function SecondSection() {
       },
       '<'
     );
+    gsap.fromTo('.dreams__caption', {y: -100, opacity: 0}, {y: 0, opacity: 1, duration: 0.5}, '+=0.7')
+    gsap.fromTo('.dreams__content', {y: -100, opacity: 0}, {y: 0, opacity: 1, duration: 0.5}, '+=0.3')
   });
 
   return (
