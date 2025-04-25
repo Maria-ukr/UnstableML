@@ -12,77 +12,84 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ThirdSection() {
   const sectionRef = useRef(null);
   const sliderRef = useRef(null);
+
   useGSAP(() => {
     const section = sectionRef.current;
     const slider = sliderRef.current;
-    let pinWrapHeight = slider.offsetHeight;
-    let horizontalScrollLength = pinWrapHeight - window.innerHeight;
+    
     if (slider) {
       const videos = gsap.utils.toArray('.slide');
-      const tl = gsap.timeline({
+      const pinWrapHeight = slider.offsetHeight;
+      const verticalScrollLength = pinWrapHeight - window.innerHeight;
+
+      // Create the vertical scroll animation
+      gsap.to(slider, {
+        y: -verticalScrollLength,
+        // ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: pinWrapHeight,
-          pin: section,
-          scrub: true,
-          markers: true,
-          pinSpacing: false,
+          start: "top top",
+          end: () => `+=${pinWrapHeight}`,
+          pin: true,
+          scrub: 1,
+          // markers: true,
           invalidateOnRefresh: true,
-          refreshPriority: -10,
-        },
-        ease: 'power1',
-        y: horizontalScrollLength,
+        }
       });
 
-      videos.forEach((v) => {
+      // Add individual video animations
+      videos.forEach((video) => {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: v,
-            start: 'top center',
-            end: 'bottom center',
-            scrub: true,
-            markers: true,
+            trigger: video,
+            start: "top center",
+            end: "bottom 30%",
+            scrub: 1,
+            // markers: true
+          }
+        });
+
+        tl.fromTo(video,
+          {
+            scale: 0.7,
           },
-          ease: 'power1.out',
-        });
-        tl.to(v, {
-          scale: 2,
-        });
-        tl.to(v, {
-          scale: 1,
-          yPercent: -100,
-        });
+          {
+            scale: 1.7,
+            opacity: 1,
+            duration: 1
+          }
+        ).to(video,
+          {
+            scale: 0.7,
+            duration: 1
+          }
+        );
       });
     }
   }, []);
 
   return (
-    <>
-      <section ref={sectionRef} className='third pt-12 pb-20 h-screen'>
-        <div className='container overflow-hidden'>
-          <div
-            ref={sliderRef}
-            className='third-col w-full'>
-            <VideoWrap
-              video={`${baseUrl}videos/enhance/enhance1.mov`}
-              classes='slide w-[447px] [257px]'
-            />
-            <VideoWrap
-              video={`${baseUrl}videos/enhance/enhance2.mov`}
-              classes='slide w-[447px] [257px]'
-            />
-            <VideoWrap
-              video={`${baseUrl}videos/enhance/enhance3.mov`}
-              classes='slide w-[447px] [257px]'
-            />
-            <VideoWrap
-              video={`${baseUrl}videos/enhance/enhance4.mov`}
-              classes='slide w-[447px] [257px]'
-            />
-          </div>
+    <section ref={sectionRef} className='third pt-12 pb-20 h-screen'>
+      <div className='container overflow-hidden'>
+        <div ref={sliderRef} className='third-col w-full'>
+          <VideoWrap
+            video={`${baseUrl}videos/enhance/enhance1.mov`}
+            classes='slide w-[447px] h-[257px]'
+          />
+          <VideoWrap
+            video={`${baseUrl}videos/enhance/enhance2.mov`}
+            classes='slide w-[447px] h-[257px]'
+          />
+          <VideoWrap
+            video={`${baseUrl}videos/enhance/enhance3.mov`}
+            classes='slide w-[447px] h-[257px]'
+          />
+          <VideoWrap
+            video={`${baseUrl}videos/enhance/enhance4.mov`}
+            classes='slide w-[447px] h-[257px]'
+          />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
