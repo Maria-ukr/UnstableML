@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useIsVisible } from '../../hooks/use-is-visible';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 export default function VideoWrap(props) {
   const { video, classes } = props;
@@ -9,6 +11,25 @@ export default function VideoWrap(props) {
     rootMargin: '200px',
     threshold: 0.1,
   }, false);
+
+  useGSAP(() => {
+    if(videoRef.current) {
+      gsap.fromTo(videoRef.current, 
+        {opacity: 0, y: 90},
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.inOut',
+          scrollTrigger: {
+            trigger: videoRef.current,
+            start: "top 85%",
+            end: "bottom 20%",
+          }
+        }
+      )
+    }
+  })
 
   const startVideoOnMouseMove = useCallback(async () => {
     try {
@@ -35,7 +56,7 @@ export default function VideoWrap(props) {
   }, [isVisible, startVideoOnMouseMove, stopVideoOnMove]);
 
   return (
-    <div className={classes} ref={targetRef}>
+    <div className={classes} ref={targetRef} data-animated-video>
       <video
         autoPlay={false}
         muted
