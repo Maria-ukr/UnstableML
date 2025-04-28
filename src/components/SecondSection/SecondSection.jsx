@@ -7,17 +7,65 @@ import Cloud2 from './../../assets/images/сloud_2.png';
 
 export default function SecondSection() {
   useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from('.cloud1', { x: -700, duration: 1.6 }, '+=2').from(
-      '.cloud2',
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: '.dreams',
+          start: 'top 20%',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      })
+      .fromTo(
+        '.cloud1',
+        {
+          x: -700,
+        },
+        {
+          x: 0,
+        },
+        '+=0'
+      )
+      .fromTo(
+        '.cloud2',
+        {
+          x: 700,
+        },
+        {
+          x: 0,
+        },
+        '<'
+      );
+    gsap.fromTo(
+      '.dreams__caption',
       {
-        x: 700,
-        duration: 1.6,
+        y: -100,
+        opacity: 0,
       },
-      '<'
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: '.dreams',
+          start: 'top 90%',
+        },
+      }
     );
-    gsap.fromTo('.dreams__caption', {y: -100, opacity: 0}, {y: 0, opacity: 1, duration: 0.5}, '+=0.7')
-    gsap.fromTo('.dreams__content', {y: -100, opacity: 0}, {y: 0, opacity: 1, duration: 0.5}, '+=0.3')
+    gsap.fromTo(
+      '.dreams__content',
+      { y: -100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: '.dreams',
+          start: 'top 75%',
+          scrub: 1,
+        },
+      }
+    );
   });
 
   return (

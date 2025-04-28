@@ -25,7 +25,6 @@ export default function ThirdSection() {
       // Create the vertical scroll animation
       gsap.to(slider, {
         y: -verticalScrollLength,
-        // ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top top",
@@ -43,9 +42,9 @@ export default function ThirdSection() {
           scrollTrigger: {
             trigger: video,
             start: "top center",
-            end: "bottom 30%",
+            end: "bottom top",
             scrub: 1,
-            // markers: true
+            markers: true
           }
         });
 
