@@ -60,23 +60,27 @@ export default function VideoWrap(props) {
     }
   }, [isVisible, startVideoOnMouseMove, stopVideoOnMove]);
 
+  function getVideoType(src) {
+    if (src.endsWith('.mp4')) return 'video/mp4';
+    if (src.endsWith('.mov')) return 'video/quicktime';
+    return '';
+  }
+
   return (
     <div className={classes} ref={targetRef} data-animated-video>
-      {/* <Suspense fallback={<p>Loading ...</p>}> */}
-        <video
-          autoPlay={false}
-          muted
-          loop
-          playsInline
-          className='h-full w-full rounded-[8px] object-cover object-center'
-          ref={videoRef}
-          preload='none'
-          poster={PosterImage}
-        >
-          <source src={video} type='video/mp4' />
-          Your browser does not support the video tag.
-        </video>
-      {/* </Suspense> */}
+      <video
+        autoPlay={false}
+        muted
+        loop
+        playsInline
+        className='h-full w-full rounded-[8px] object-cover object-center'
+        ref={videoRef}
+        preload='none'
+        poster={PosterImage}
+      >
+        <source src={video} type={getVideoType(video)} />
+        Your browser does not support the video tag.
+      </video>
     </div>
   );
 }

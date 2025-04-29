@@ -9,42 +9,45 @@ const baseUrl = import.meta.env.BASE_URL;
 class RoundedPlaneGeometry extends THREE.BufferGeometry {
   constructor(width = 1, height = 1, radius = 0.1, segments = 32) {
     super();
-    
+
     const vertices = [];
     const indices = [];
     const uvs = [];
-    
+
     // Create rounded rectangle
     const halfWidth = width / 2;
     const halfHeight = height / 2;
-    
+
     // Center
     vertices.push(0, 0, 0);
     uvs.push(0.5, 0.5);
-    
+
     // Create vertices around the edges
     for (let i = 0; i <= segments; i++) {
       const angle = (i / segments) * Math.PI * 2;
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
-      
+
       // Top right corner
       vertices.push(halfWidth - radius + x, halfHeight - radius + y, 0);
-      uvs.push(1 - radius/width + x/width, 1 - radius/height + y/height);
-      
+      uvs.push(
+        1 - radius / width + x / width,
+        1 - radius / height + y / height
+      );
+
       // Top left corner
       vertices.push(-halfWidth + radius + x, halfHeight - radius + y, 0);
-      uvs.push(radius/width + x/width, 1 - radius/height + y/height);
-      
+      uvs.push(radius / width + x / width, 1 - radius / height + y / height);
+
       // Bottom left corner
       vertices.push(-halfWidth + radius + x, -halfHeight + radius + y, 0);
-      uvs.push(radius/width + x/width, radius/height + y/height);
-      
+      uvs.push(radius / width + x / width, radius / height + y / height);
+
       // Bottom right corner
       vertices.push(halfWidth - radius + x, -halfHeight + radius + y, 0);
-      uvs.push(1 - radius/width + x/width, radius/height + y/height);
+      uvs.push(1 - radius / width + x / width, radius / height + y / height);
     }
-    
+
     // Create indices for triangles
     for (let i = 0; i < segments; i++) {
       const base = i * 4 + 1;
@@ -53,9 +56,12 @@ class RoundedPlaneGeometry extends THREE.BufferGeometry {
       indices.push(0, base + 2, base + 3);
       indices.push(0, base + 3, base + 4);
     }
-    
+
     this.setIndex(indices);
-    this.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    this.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(vertices, 3)
+    );
     this.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
   }
 }
@@ -76,7 +82,8 @@ const videos = [
 function VideoPlane({ video, position, rotation = [0, 0, 0], isMirrored }) {
   const meshRef = useRef();
   const [videoTexture, setVideoTexture] = useState(null);
-  
+  const [hovered, setHovered] = useState(false);
+
   React.useEffect(() => {
     const videoElement = document.createElement('video');
     videoElement.src = video;
@@ -84,7 +91,7 @@ function VideoPlane({ video, position, rotation = [0, 0, 0], isMirrored }) {
     videoElement.muted = true;
     videoElement.playsInline = true;
     videoElement.autoplay = true;
-    
+
     videoElement.oncanplay = () => {
       videoElement.play();
       const texture = new THREE.VideoTexture(videoElement);
@@ -96,19 +103,44 @@ function VideoPlane({ video, position, rotation = [0, 0, 0], isMirrored }) {
   useFrame(() => {
     if (meshRef.current) {
       if (isMirrored) {
-        meshRef.current.rotation.y = 0.7;
+        meshRef.current.rotation.y = 0.1;
         meshRef.current.rotation.x = -0.1;
         meshRef.current.rotation.z = 0.03;
+        meshRef.current.position.z -= -0.01;
+        meshRef.current.position.x += -0.005;
       } else {
-        meshRef.current.rotation.y = -0.7;
+        meshRef.current.rotation.y = -0.1;
         meshRef.current.rotation.x = -0.1;
         meshRef.current.rotation.z = -0.03;
+        meshRef.current.position.z -= -0.01;
+        meshRef.current.position.x -= -0.005;
       }
     }
   });
 
+  useFrame(() => {
+    if (meshRef.current) {
+      const target = hovered ? 1.3 : 1;
+      meshRef.current.scale.x += (target - meshRef.current.scale.x) * 0.1;
+      meshRef.current.scale.y += (target - meshRef.current.scale.y) * 0.1;
+      meshRef.current.scale.z += (target - meshRef.current.scale.z) * 0.1;
+    }
+  });
+
   return (
-    <mesh ref={meshRef} position={position} rotation={rotation}>
+    <mesh
+      ref={meshRef}
+      position={position}
+      rotation={rotation}
+      onPointerOver={(e) => {
+        e.stopPropagation();
+        setHovered(true);
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation();
+        setHovered(false);
+      }}
+    >
       <roundedPlaneGeometry args={[7, 4, 0.1]} />
       {videoTexture && (
         <meshBasicMaterial
@@ -125,12 +157,12 @@ function Scene({ videos, isMirrored = false }) {
   return (
     <>
       {videos.map((video, index) => {
-        const angle = 10;
+        const angle = 7;
         const centerIndex = Math.floor(videos.length / 2);
         const offset = index - centerIndex;
-        const x = Math.sin(angle) * offset * 8;
-        const z = Math.cos(angle) * offset * 10;
-        
+        const x = Math.sin(angle) * offset * 6;
+        const z = Math.cos(angle) * offset * 4;
+
         return (
           <VideoPlane
             key={`${isMirrored ? 'mirrored' : 'original'}-${index}`}
