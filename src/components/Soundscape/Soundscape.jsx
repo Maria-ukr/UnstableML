@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { matchMediaScreen } from '../../hooks/match-media';
 import VideoWrap from '../VideoWrap/VideoWrap';
 import SliderWrap from '../SliderWrap/SliderWrap';
@@ -12,6 +14,55 @@ const baseUrl = import.meta.env.BASE_URL;
 
 export default function Soundscape() {
   const { isMobile } = matchMediaScreen({ widthScreen: 768 });
+  const contentRef = useRef(null);
+  const contentSliderRef = useRef(null);
+
+  useGSAP(() => {
+    const contentContainer = contentRef.current;
+    const contentSlider = contentSliderRef.current;
+    if (contentContainer) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: '.soundscape',
+            start: 'top bottom',
+            end: 'bottom 80%',
+            scrub: 1,
+          },
+          ease: 'power2.inOut',
+        })
+        .fromTo(
+          contentContainer,
+          { opacity: 0, y: -200, },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+          },
+          '+=0.4'
+        );
+    }
+    if (contentSlider) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: '.soundscape',
+            start: 'top bottom',
+            end: 'bottom 70%',
+            scrub: 1,
+          },
+        })
+        .fromTo(
+          contentSlider,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.2,
+          },
+          '+=0.5'
+        );
+    }
+  });
 
   return (
     <section className='container gallery'>
@@ -36,13 +87,13 @@ export default function Soundscape() {
         </svg>
       </div>
       <div className='gallery-wrap relative'>
-        {isMobile ? WithSlider : WithGrids}
+        {isMobile ? <WithSlider ref={contentSliderRef} /> : <WithGrids ref={contentRef} />}
       </div>
     </section>
   );
 }
 
-const WithGrids = (
+const WithGrids = React.forwardRef((props, ref) => (
   <>
     <div className='flex flex-wrap items-start justify-center gap-2 gallery__grid'>
       <div className='gallery__grid-content flex justify-center gap-2'>
@@ -50,7 +101,7 @@ const WithGrids = (
           video={`${baseUrl}videos/soundscape/vid1.mp4`}
           classes='w-[383px] h-[240px]'
         />
-        <div className='gallery__grid-text h-full px-10'>
+        <div ref={ref} className='gallery__grid-text h-full px-10'>
           <h4 className='font-sans font-medium text-3xl'>
             Create videos packed
           </h4>
@@ -90,9 +141,9 @@ const WithGrids = (
       </div>
     </div>
   </>
-);
+));
 
-const WithSlider = (
+const WithSlider = React.forwardRef((props, ref) => (
   <SliderWrap
     slides={[
       `${baseUrl}videos/soundscape/vid1.mp4`,
@@ -102,7 +153,7 @@ const WithSlider = (
       `${baseUrl}videos/soundscape/vid5.mp4`,
     ]}
   >
-    <div className='gallery__content'>
+    <div ref={ref} className='gallery__content'>
       <h4 className='font-sans font-medium text-5xl'>
         Create videos packed with &nbsp;
         <span className='font-serif font-semibold text-5xl'>
@@ -116,4 +167,4 @@ const WithSlider = (
       </p>
     </div>
   </SliderWrap>
-);
+));

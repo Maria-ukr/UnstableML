@@ -11,61 +11,74 @@ export default function SecondSection() {
       .timeline({
         scrollTrigger: {
           trigger: '.dreams',
-          start: 'top 20%',
-          end: 'bottom top',
+          start: 'top bottom',
+          end: 'bottom 70%',
           scrub: 1,
         },
       })
       .fromTo(
         '.cloud1',
         {
-          x: -700,
+          left: -1000,
+          opacity: 0,
         },
         {
-          x: 0,
+          left: -600,
+          opacity: 1,
+          duration: 0.3,
         },
         '+=0'
       )
       .fromTo(
         '.cloud2',
         {
-          x: 700,
+          right: -1000,
+          opacity: 0,
+        },
+        {
+          right: -600,
+          opacity: 1,
+          duration: 0.3,
+        },
+        '<'
+      )
+      .fromTo(
+        '.dreams__caption',
+        {
+          x: -200,
+          opacity: 0,
         },
         {
           x: 0,
+          opacity: 1,
+          duration: 0.2,
+          scrollTrigger: {
+            trigger: '.dreams',
+            start: 'top bottom',
+            end: 'bottom bottom',
+            scrub: 1,
+          },
+          ease: 'power2.inOut',
+        },
+        '<'
+      )
+      .fromTo(
+        '.dreams__content',
+        { x: 200, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.2,
+          scrollTrigger: {
+            trigger: '.dreams',
+            start: 'top bottom',
+            end: 'bottom bottom',
+            scrub: 1,
+          },
+          ease: 'power2.inOut',
         },
         '<'
       );
-    gsap.fromTo(
-      '.dreams__caption',
-      {
-        y: -100,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: '.dreams',
-          start: 'top 90%',
-        },
-      }
-    );
-    gsap.fromTo(
-      '.dreams__content',
-      { y: -100, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: '.dreams',
-          start: 'top 75%',
-          scrub: 1,
-        },
-      }
-    );
   });
 
   return (
