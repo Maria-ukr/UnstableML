@@ -28,11 +28,13 @@ export default function ThirdSection() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: () => `+=${pinWrapHeight}`,
+          end: () => `+=${verticalScrollLength}`,
           pin: true,
           scrub: 1,
-          // markers: true,
           invalidateOnRefresh: true,
+          pinReparent: true,
+          anticipatePin: 1,
+          markers: true,
         }
       });
 
@@ -42,7 +44,7 @@ export default function ThirdSection() {
           scrollTrigger: {
             trigger: video,
             start: "top center",
-            end: "bottom top",
+            end: () => `+=200`,
             scrub: 1,
             markers: true
           }
@@ -50,16 +52,16 @@ export default function ThirdSection() {
 
         tl.fromTo(video,
           {
-            scale: 0.7,
+            scale: 1,
           },
           {
-            scale: 1.7,
-            duration: 1
+            scale: 1.78,
+            zIndex: 99999,
           }
-        ).to(video,
+        )
+        .to(video,
           {
-            scale: 0.7,
-            duration: 1
+            scale: 1,
           }
         );
       });
@@ -70,22 +72,12 @@ export default function ThirdSection() {
     <section ref={sectionRef} className='third pt-12 pb-20 h-screen'>
       <div className='container overflow-hidden'>
         <div ref={sliderRef} className='third-col w-full'>
-          <VideoWrap
-            video={`${baseUrl}videos/enhance/enhance1.mov`}
-            classes='slide w-[447px] h-[257px]'
-          />
-          <VideoWrap
-            video={`${baseUrl}videos/enhance/enhance2.mov`}
-            classes='slide w-[447px] h-[257px]'
-          />
-          <VideoWrap
-            video={`${baseUrl}videos/enhance/enhance3.mov`}
-            classes='slide w-[447px] h-[257px]'
-          />
-          <VideoWrap
-            video={`${baseUrl}videos/enhance/enhance4.mov`}
-            classes='slide w-[447px] h-[257px]'
-          />
+          {Array(4).fill(null).map((_, index) => (
+            <VideoWrap key={index}
+              video={`${baseUrl}videos/categories/${index+1}.mp4`}
+              classes='slide w-[447px] h-[257px]'
+            />
+          ))}
         </div>
       </div>
     </section>
