@@ -6,11 +6,13 @@
   display: flex
   flex-direction: column
   z-index: 99999
+  @media (max-width: 769px)
+      margin-bottom: 100px
   
   &-col
     overflow: hidden
     display: flex
-    padding: 200px 0 110px
+    padding: 200px 0
     flex-direction: column
     justify-content: flex-start
     align-items: center
@@ -18,8 +20,32 @@
     height: max-content
     width: 100%
     will-change: transform
+    @media (max-width: 769px)
+      padding: 100px 0
 
   & .slide
+    @media (max-width: 769px)
+      width: 82%
+      height: auto
     & video
       border-radius: 43px
       transform-origin: center center
+
+.categories
+  height: max-content
+  width: 100%
+  position: absolute
+  inset: 0
+  display: flex
+  flex-wrap: nowrap
+  align-items: center
+  gap: 200px
+  z-index: -1
+
+  & .category
+    width: 100%
+    text-wrap: nowrap
+    font-size: calc(48px + (128 - 48) * (100vw - 375px) / (1600 - 375))
+    line-height: 100%
+    @media (max-width: 769px)
+      

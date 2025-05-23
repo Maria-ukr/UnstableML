@@ -1,10 +1,11 @@
 import { useRef } from 'react';
-import gsap from 'gsap';
+import gsap, { Elastic } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import VideoWrap from '../VideoWrap/VideoWrap';
 
 import './ThirdSection.sass';
+import { matchMediaScreen } from '../../hooks/match-media';
 
 const baseUrl = import.meta.env.BASE_URL;
 gsap.registerPlugin(ScrollTrigger);
@@ -12,73 +13,100 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ThirdSection() {
   const sectionRef = useRef(null);
   const sliderRef = useRef(null);
+  const categoriesRef = useRef(null);
+  const { isMobile } = matchMediaScreen({ widthScreen: 850 });
 
   useGSAP(() => {
     const section = sectionRef.current;
     const slider = sliderRef.current;
-    
-    if (slider) {
+    const categories = categoriesRef.current;
+    if (slider && categories) {
       const videos = gsap.utils.toArray('.slide');
       const pinWrapHeight = slider.offsetHeight;
       const verticalScrollLength = pinWrapHeight - window.innerHeight;
-
-      // Create the vertical scroll animation
-      gsap.to(slider, {
-        y: -verticalScrollLength,
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top top",
+          start: 'top top',
           end: () => `+=${verticalScrollLength}`,
-          pin: true,
           scrub: 1,
+          pin: true,
+          smoothScrub: 0.1,
+          fastScrollEnd: true,
           invalidateOnRefresh: true,
           pinReparent: true,
-          anticipatePin: 1,
-          markers: true,
-        }
+        },
       });
+      tl.fromTo(
+        '.categories',
+        {
+          x: '100%',
+        },
+        {
+          x: -categories.scrollWidth,
+        },
+        0
+      ).to(
+        slider,
+        {
+          y: -verticalScrollLength,
+        },
+        0
+      );
 
-      // Add individual video animations
       videos.forEach((video) => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: video,
-            start: "top center",
-            end: () => `+=200`,
+            start: 'top 70%',
+            end: `bottom 30%`,
             scrub: 1,
-            markers: true
-          }
+            stagger: 0.5,
+          },
         });
-
-        tl.fromTo(video,
+        tl.fromTo(
+          video,
           {
             scale: 1,
           },
           {
-            scale: 1.78,
+            scale: isMobile ? 1.1 : 1.78,
             zIndex: 99999,
+            ease: Elastic.inOut,
           }
-        )
-        .to(video,
-          {
-            scale: 1,
-          }
-        );
+        ).to(video, {
+          scale: 1,
+        });
       });
     }
   }, []);
 
   return (
-    <section ref={sectionRef} className='third pt-12 pb-20 h-screen'>
-      <div className='container overflow-hidden'>
+    <section
+      ref={sectionRef}
+      className='third pt-10 pb-10 max-md:py-4 h-screen'
+    >
+      <div className='container overflow-hidden relative'>
         <div ref={sliderRef} className='third-col w-full'>
-          {Array(4).fill(null).map((_, index) => (
-            <VideoWrap key={index}
-              video={`${baseUrl}videos/categories/${index+1}.mp4`}
-              classes='slide w-[447px] h-[257px]'
-            />
-          ))}
+          {Array(4)
+            .fill(null)
+            .map((_, index) => (
+              <VideoWrap
+                key={index}
+                video={`${baseUrl}videos/categories/${index + 1}.mp4`}
+                classes='slide w-[447px] h-[257px]'
+              />
+            ))}
         </div>
+      </div>
+      <div ref={categoriesRef} className='categories h-full w-full m-auto '>
+        {Array(4)
+          .fill(null)
+          .map((_, index) => (
+            <p key={index} className='category font-medium'>{`Category ${
+              index + 1
+            }`}</p>
+          ))}
       </div>
     </section>
   );

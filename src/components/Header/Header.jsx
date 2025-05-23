@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import gsap, { Elastic } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import Logo from '../Logo/Logo';
@@ -11,11 +11,12 @@ export default function Header() {
     const headerHide = gsap
       .from('.header', {
         yPercent: -100,
-        duration: 0.2,
+        duration: 0.4,
       })
       .progress(1);
     ScrollTrigger.create({
       start: 'top top',
+      ease: Elastic.inOut,
       onUpdate: (self) => {
         self.direction === -1 ? headerHide.play() : headerHide.reverse();
       },
