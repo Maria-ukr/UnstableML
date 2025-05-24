@@ -84,7 +84,7 @@ export default function ThirdSection() {
   return (
     <section
       ref={sectionRef}
-      className='third pt-10 pb-10 max-md:py-4 h-screen'
+      className='third pt-10 pb-6 max-md:py-4 h-screen'
     >
       <div className='container overflow-hidden relative'>
         <div ref={sliderRef} className='third-col w-full'>

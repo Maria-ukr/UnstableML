@@ -47,7 +47,7 @@ export default function Enhance() {
           scrollTrigger: {
             trigger: '.enhance',
             start: 'top bottom',
-            end: 'bottom 70%',
+            end: 'bottom 80%',
             scrub: 1,
           },
         })
@@ -58,14 +58,19 @@ export default function Enhance() {
             opacity: 1,
             duration: 0.2,
           },
-          '+=0.5'
+          0
         );
     }
   });
 
   return (
     <section className='container gallery'>
-      <div className='gallery__caption enhance'>
+      <div
+        className='gallery__caption enhance w-[70%]'
+        style={{
+          bottom: `${isMobile ? '0' : '15%'}`
+        }}
+      >
         <video
           autoPlay
           muted
@@ -79,7 +84,7 @@ export default function Enhance() {
         </video>
         <svg width='100%'>
           <clipPath id='enhance-overlay' width='100%' height='100%'>
-            <text id='title' x='0' y='0' width='100%' dy='0rem'>
+            <text id='title' x='0' y='0' width='100%' dy='2rem'>
               Enhance
             </text>
           </clipPath>
@@ -112,11 +117,11 @@ const WithGrids = React.forwardRef((props, ref) => (
       <div className='flex gap-2'>
         <VideoWrap
           video={`${baseUrl}videos/enhance/enhance3.mov`}
-          classes='w-[50%] [280px]'
+          classes='w-[50%] h-[280px]'
         />
         <VideoWrap
           video={`${baseUrl}videos/enhance/enhance4.mov`}
-          classes='w-[50%] [280px]'
+          classes='w-[50%] h-[280px]'
         />
       </div>
 

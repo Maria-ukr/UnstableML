@@ -32,7 +32,7 @@ export default function Motion() {
         })
         .fromTo(
           contentContainer,
-          { opacity: 0, y: -200, },
+          { opacity: 0, y: -200 },
           {
             opacity: 1,
             y: 0,
@@ -47,7 +47,7 @@ export default function Motion() {
           scrollTrigger: {
             trigger: '.motion',
             start: 'top bottom',
-            end: 'bottom 70%',
+            end: 'bottom 80%',
             scrub: 1,
           },
         })
@@ -58,14 +58,19 @@ export default function Motion() {
             opacity: 1,
             duration: 0.2,
           },
-          '+=0.5'
+          0
         );
     }
   });
 
   return (
     <section className='container gallery'>
-      <div className='gallery__caption motion'>
+      <div
+        className='gallery__caption motion w-[70%]'
+        style={{
+          bottom: `${isMobile ? '0' : '18%'}`
+        }}
+      >
         <video
           autoPlay
           muted
@@ -79,7 +84,7 @@ export default function Motion() {
         </video>
         <svg width='100%'>
           <clipPath id='motion-overlay' width='100%' height='100%'>
-            <text id='title' x='0' y='0' width='100%' dy='0rem'>
+            <text id='title' x='0' y='0' width='100%' dy='2rem'>
               Motion
             </text>
           </clipPath>
@@ -112,11 +117,11 @@ const WithGrids = React.forwardRef((props, ref) => (
       <div className='flex gap-2'>
         <VideoWrap
           video={`${baseUrl}videos/generation/horizontal_3.mp4`}
-          classes='w-[50%]'
+          classes='w-[50%] h-[280px]'
         />
         <VideoWrap
           video={`${baseUrl}videos/generation/horizontal_4.mp4`}
-          classes='w-[50%]'
+          classes='w-[50%] h-[280px]'
         />
       </div>
 

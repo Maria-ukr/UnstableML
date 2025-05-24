@@ -26,20 +26,20 @@ export default function Soundscape() {
           scrollTrigger: {
             trigger: '.soundscape',
             start: 'top bottom',
-            end: 'bottom 80%',
+            end: 'bottom 90%',
             scrub: 1,
           },
           ease: 'power2.inOut',
         })
         .fromTo(
           contentContainer,
-          { opacity: 0, y: -200, },
+          { opacity: 0, y: -200 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.4,
+            duration: 0.2,
           },
-          '+=0.4'
+          0
         );
     }
     if (contentSlider) {
@@ -48,7 +48,7 @@ export default function Soundscape() {
           scrollTrigger: {
             trigger: '.soundscape',
             start: 'top bottom',
-            end: 'bottom 70%',
+            end: 'bottom 90%',
             scrub: 1,
           },
         })
@@ -59,14 +59,19 @@ export default function Soundscape() {
             opacity: 1,
             duration: 0.2,
           },
-          '+=0.5'
+          0
         );
     }
   });
 
   return (
     <section className='container gallery'>
-      <div className='gallery__caption soundscape'>
+      <div
+        className='gallery__caption soundscape w-[100%]'
+        style={{
+          bottom: `${isMobile ? '0' : '10%'}`
+        }}
+      >
         <video
           autoPlay
           muted
@@ -80,14 +85,18 @@ export default function Soundscape() {
         </video>
         <svg width='100%'>
           <clipPath id='soundscape-overlay' width='100%' height='100%'>
-            <text id='title' x='0' y='0' width='100%' dy='0rem'>
+            <text id='title' x='0' y='0' width='100%' dy='2rem'>
               Soundscape
             </text>
           </clipPath>
         </svg>
       </div>
       <div className='gallery-wrap relative'>
-        {isMobile ? <WithSlider ref={contentSliderRef} /> : <WithGrids ref={contentRef} />}
+        {isMobile ? (
+          <WithSlider ref={contentSliderRef} />
+        ) : (
+          <WithGrids ref={contentRef} />
+        )}
       </div>
     </section>
   );

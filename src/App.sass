@@ -1,5 +1,5 @@
 .gallery
-  min-height: 100vh
+  height: max-content
   position: relative
   z-index: 50
   display: flex
@@ -38,21 +38,19 @@
 
 .gallery__caption
   position: absolute
-  width: 100vh
   height: 140px
   transform: rotate(-90deg) translateX(-10%)
   transform-origin: top left
   top: auto
-  left: 3%
+  left: 0
   right: auto
-  bottom: 13%
   z-index: 99999
   background-color: transparent
   @media (max-width: 678px)
     transform: rotate(-90deg) translateX(0%)
-    height: 70px
+    height: 45px
     bottom: 1%
-    left: 5%
+    left: 0%
   & video 
     z-index: -1
     position: absolute
@@ -72,5 +70,5 @@
       letter-spacing: -0.05em
       white-space: nowrap
       dominant-baseline: hanging
-      @media (max-width: 768px)
-        font-size: calc(59px + (110 - 58) * (100vw - 375px) / (1600 - 375))
+      @media (max-width: 769px)
+        font-size: calc(59px + (200 - 58) * (100vw - 375px) / (1600 - 375))
